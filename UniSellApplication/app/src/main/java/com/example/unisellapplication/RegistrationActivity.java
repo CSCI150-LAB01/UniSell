@@ -11,10 +11,8 @@ import android.widget.TextView;
 public class RegistrationActivity extends AppCompatActivity {
 
     Button signUp;
-    EditText name, email, password;
+    EditText name, email, password, phone;
     TextView signIn;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +23,7 @@ public class RegistrationActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
+        phone = findViewById(R.id.phone);
         signIn = findViewById(R.id.sign_in);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
