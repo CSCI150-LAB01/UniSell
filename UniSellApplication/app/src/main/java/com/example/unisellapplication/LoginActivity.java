@@ -23,21 +23,18 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password_login);
         signUp = findViewById(R.id.sign_up_login);
 
-        signIn.setOnClickListener(new View.OnClickListener() {
+        signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this,RegistrationActivity.class));
             }
         });
 
-        signUp.setOnClickListener(new View.OnClickListener() {
+        signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-
-
-
     }
 }
