@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/candal"
-        android:text="Unicell"
+        android:text="UniSell"
         android:textColor="@color/blue_2767"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <LinearLayout
+            android:onClick="login"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -67,14 +68,16 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="6dp"
                 android:text="Login"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/candal"
+                android:textSize="22sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:onClick="registration"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
 
             <ImageView
                 android:layout_width="50dp"
@@ -87,10 +90,24 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="6dp"
                 android:text="Registration"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/candal"
+                android:textSize="22sp" />
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:textAlignment="center"
+        android:layout_width="350dp"
+        android:textColor="@color/blue_2767"
+        android:fontFamily="@font/candal"
+        android:layout_height="wrap_content"
+        android:text="Resources for Fresno State Students. We are a platform where you can find your school necessities!"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 
 
 
