@@ -1,23 +1,34 @@
 package com.example.unisellapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.unisellapplication.models.UserModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     Button signIn;
     EditText email, password;
     TextView signUp;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        auth = FirebaseAuth.getInstance();
         signIn = findViewById(R.id.login_button);
         email = findViewById(R.id.email_login);
         password = findViewById(R.id.password_login);
@@ -33,8 +44,41 @@ public class LoginActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                loginUser();
             }
         });
+    }
+
+    private void loginUser() {
+        String userEmail = email.getText().toString();
+        String userPassword = password.getText().toString();
+
+        if(TextUtils.isEmpty((userEmail))) {
+            Toast.makeText(this, "Email is Empty!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty((userPassword))) {
+            Toast.makeText(this, "Password is Empty!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!userEmail.contains("@csufresno.edu") && !userEmail.contains("@mail.fresnostate.edu")){
+            Toast.makeText(this, "User email is not a Fresno State email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        //Login user
+        auth.signInWithEmailAndPassword(userEmail,userPassword)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(LoginActivity.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
