@@ -11,10 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.unisellapplication.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -22,12 +24,14 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText name, email, password, phone;
     TextView signIn;
     FirebaseAuth auth;
+    FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
         signUp = findViewById(R.id.reg_btn);
         name = findViewById(R.id.name);
@@ -45,7 +49,6 @@ public class RegistrationActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 createUser();
             }
         });
@@ -99,6 +102,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                        if(task.isSuccessful()){
+
+                           UserModel userModel = new UserModel(userName,userEmail,userPassword,userPhoneNumber);
+                           String id = task.getResult().getUser().getUid();
+                           database.getReference().child("Users").child(id).setValue(userModel);
+
                            Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                        }
                        else {
