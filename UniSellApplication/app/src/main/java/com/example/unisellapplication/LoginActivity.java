@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
     Button signIn;
-    //git
     EditText email, password;
     TextView signUp;
     @Override
