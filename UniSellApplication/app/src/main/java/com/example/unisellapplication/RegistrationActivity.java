@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
     TextView signIn;
     FirebaseAuth auth;
     FirebaseDatabase database;
-
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
+        progressBar = findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.GONE);
         signUp = findViewById(R.id.reg_btn);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
