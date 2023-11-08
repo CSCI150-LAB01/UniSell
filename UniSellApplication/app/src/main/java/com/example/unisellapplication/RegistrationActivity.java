@@ -91,7 +91,7 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
 
-        if (!userEmail.contains("@csufresno.edu") || !userEmail.contains("@mail.fresnostate.edu")){
+        if (!userEmail.contains("@csufresno.edu") && !userEmail.contains("@mail.fresnostate.edu")){
             Toast.makeText(this, "User email is not a fresnostate email", Toast.LENGTH_SHORT).show();
             return;
         }
