@@ -36,8 +36,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
+
         progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.GONE);
+
         signUp = findViewById(R.id.reg_btn);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
@@ -55,6 +57,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createUser();
+                progressBar.setVisibility(View.VISIBLE);
             }
         });
 
@@ -111,10 +114,12 @@ public class RegistrationActivity extends AppCompatActivity {
                            UserModel userModel = new UserModel(userName,userEmail,userPassword,userPhoneNumber);
                            String id = task.getResult().getUser().getUid();
                            database.getReference().child("Users").child(id).setValue(userModel);
+                           progressBar.setVisibility(View.GONE);
 
                            Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                        }
                        else {
+                           progressBar.setVisibility(View.GONE);
                            Toast.makeText(RegistrationActivity.this, "Error:"+task.getException(), Toast.LENGTH_SHORT).show();
                        }
                     }
