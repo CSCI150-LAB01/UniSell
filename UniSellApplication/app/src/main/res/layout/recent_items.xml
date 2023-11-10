@@ -20,6 +20,7 @@
             android:src="@mipmap/offers3"/>
 
         <TextView
+            android:id="@+id/recent_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/archivo"
@@ -28,13 +29,13 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/recent_des"
+            android:id="@+id/recent_price"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="Desciprtion"
+            android:text="Price"
             android:textSize="16sp"/>
 
         <LinearLayout
@@ -43,6 +44,7 @@
             android:orientation="horizontal" >
 
             <TextView
+                android:id="@+id/recent_cat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Category"
@@ -51,10 +53,6 @@
 
         </LinearLayout>
 
-
-
-
     </LinearLayout>
-
 
 </androidx.cardview.widget.CardView>
