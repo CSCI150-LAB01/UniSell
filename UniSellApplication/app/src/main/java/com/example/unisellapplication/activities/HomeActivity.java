@@ -1,27 +1,17 @@
-package com.example.unisellapplication;
+package com.example.unisellapplication.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Menu;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.unisellapplication.databinding.ActivityMainBinding;
+import com.example.unisellapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
     FirebaseAuth auth;
@@ -35,13 +25,15 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
         if(auth.getCurrentUser() != null){
             progressBar.setVisibility(View.VISIBLE);
+            startActivity(new Intent(HomeActivity.this, MainActivity.class));
             Toast.makeText(this, "please wait you are already logged in", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
     public void login(View view) {
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
     }
     public void registration(View view) {
-        startActivity(new Intent(MainActivity.this, RegistrationActivity.class));
+        startActivity(new Intent(HomeActivity.this, RegistrationActivity.class));
     }
 }
