@@ -22,4 +22,14 @@
         android:name="com.example.unisellapplication.ui.category.CategoryFragment"
         android:label="@string/category"
         tools:layout="@layout/fragment_category" />
+    <fragment
+        android:id="@+id/nav_make_listing"
+        android:name="com.example.unisellapplication.CreateLisitngFragment"
+        android:label="@string/make_listing"
+        tools:layout="@layout/fragment_create_lisitng" />
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.example.unisellapplication.MyFavoritesFragment"
+        android:label="@string/favorites"
+        tools:layout="@layout/fragment_my_favorites" />
 </navigation>
