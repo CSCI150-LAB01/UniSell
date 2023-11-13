@@ -1,11 +1,14 @@
 package com.example.unisellapplication.ui.create_listing;
 
+
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -20,19 +23,18 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.unisellapplication.R;
-import com.example.unisellapplication.activities.HomeActivity;
 
 public class CreateListingFragment extends Fragment {
 
     ImageButton imageButton;
     EditText title, description, price;
-    private static final int SELECT_PICTURE = 200;
+    private static final int SELECT_PICTURE = 1;
 
-//    FirebaseFirestore db;
+    Uri ImageUri;
+    Button addListing;
+
     String[] item = {"Textbooks", "School Supplies","Lab Equipment", "Dorm Essentials", "Other"};
-
     AutoCompleteTextView autoCompleteTextView;
-
     ArrayAdapter<String> adapterItems;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -42,7 +44,8 @@ public class CreateListingFragment extends Fragment {
         imageButton = root.findViewById(R.id.add_img_button);
         title = root.findViewById(R.id.editTextTitle);
         description = root.findViewById(R.id.editTextDescripiton);
-        price =root.findViewById(R.id.editTextPrice);
+        price = root.findViewById(R.id.editTextPrice);
+        addListing = root.findViewById(R.id.add_listing_btn);
 
         autoCompleteTextView =root.findViewById(R.id.SelectCategory);
 
@@ -74,5 +77,16 @@ public class CreateListingFragment extends Fragment {
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==SELECT_PICTURE && data!=null && resultCode==RESULT_OK) {
+            {
+                ImageUri = data.getData();
+                imageButton.setImageURI(ImageUri);
+            }
+        }
     }
 }
