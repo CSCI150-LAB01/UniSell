@@ -52,7 +52,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
             }
         });
-
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,12 +109,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                        if(task.isSuccessful()){
-
                            UserModel userModel = new UserModel(userName,userEmail,userPassword,userPhoneNumber);
                            String id = task.getResult().getUser().getUid();
                            database.getReference().child("Users").child(id).setValue(userModel);
                            progressBar.setVisibility(View.GONE);
-
+                           SendUserToMainActivity();
                            Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                        }
                        else {
@@ -124,6 +122,10 @@ public class RegistrationActivity extends AppCompatActivity {
                        }
                     }
                 });
-
+    }
+    private void SendUserToMainActivity()
+    {
+        Intent mainIntent = new Intent(RegistrationActivity.this, MainActivity.class);
+        startActivity(mainIntent);
     }
 }
