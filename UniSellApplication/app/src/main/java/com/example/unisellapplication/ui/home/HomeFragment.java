@@ -11,12 +11,18 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.unisellapplication.R;
+import com.example.unisellapplication.adapters.RecentAdapters;
 import com.example.unisellapplication.databinding.FragmentHomeBinding;
+import com.example.unisellapplication.models.ListingModel;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
 
     //recent items
+    List<ListingModel> listingModelList;
+    RecentAdapters recentAdapters;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

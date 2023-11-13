@@ -4,17 +4,15 @@ public class ListingModel {
     String name;
     String price;
     String category;
-    String type;
     String img_url;
 
     public ListingModel() {
     }
 
-    public ListingModel(String name, String price, String category, String type, String img_url) {
+    public ListingModel(String name, String price, String category, String img_url) {
         this.name = name;
         this.price = price;
         this.category = category;
-        this.type = type;
         this.img_url = img_url;
     }
 
@@ -40,14 +38,6 @@ public class ListingModel {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getImg_url() {

@@ -24,9 +24,9 @@
         tools:layout="@layout/fragment_category" />
     <fragment
         android:id="@+id/nav_make_listing"
-        android:name="com.example.unisellapplication.CreateLisitngFragment"
+        android:name="com.example.unisellapplication.ui.create_listing.CreateListingFragment"
         android:label="@string/make_listing"
-        tools:layout="@layout/fragment_create_lisitng" />
+        tools:layout="@layout/fragment_create_listing" />
     <fragment
         android:id="@+id/nav_favorites"
         android:name="com.example.unisellapplication.MyFavoritesFragment"
