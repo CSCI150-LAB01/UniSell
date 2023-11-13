@@ -23,7 +23,7 @@
         android:id="@+id/title_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="1dp"
         android:text="Title"
         android:textColor="@color/blue_2767"
@@ -36,7 +36,7 @@
     <EditText
         android:id="@+id/editTextTitle"
         android:layout_width="400dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="Add title here..."
@@ -50,7 +50,7 @@
         android:id="@+id/description_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="1dp"
         android:text="Description"
         android:textColor="@color/blue_2767"
@@ -63,7 +63,7 @@
     <EditText
         android:id="@+id/editTextDescripiton"
         android:layout_width="400dp"
-        android:layout_height="230dp"
+        android:layout_height="215dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
         android:gravity="top"
@@ -79,7 +79,7 @@
         android:id="@+id/price_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28.5dp"
         android:layout_marginBottom="1dp"
         android:text="Price"
         android:textColor="@color/blue_2767"
@@ -91,9 +91,9 @@
     <EditText
         android:id="@+id/editTextPrice"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@drawable/edittext_background"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="21.5dp"
         android:ems="10"
         android:hint="$ Price"
         android:textSize="20sp"
@@ -101,6 +101,24 @@
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toEndOf="@+id/price_txt"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescripiton" />
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="225dp"
+        android:layout_height="55dp"
+        android:layout_margin="16dp"
+        android:hint="Select Category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescripiton">
+
+        <AutoCompleteTextView
+            android:id="@+id/SelectCategory"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/add_listing_btn"
