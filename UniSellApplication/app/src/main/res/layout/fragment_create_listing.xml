@@ -109,7 +109,10 @@
         android:layout_height="55dp"
         android:layout_margin="16dp"
         android:hint="Select Category"
+        app:hintTextColor="@color/hint_color"
         app:layout_constraintEnd_toEndOf="parent"
+        app:boxStrokeColor="@color/blue_2767"
+        app:endIconTint="@color/hint_color"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescripiton">
 
         <AutoCompleteTextView

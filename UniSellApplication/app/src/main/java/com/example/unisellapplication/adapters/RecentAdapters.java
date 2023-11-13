@@ -31,8 +31,8 @@ public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Glide.with(context).load(listingModelList.get(position).getImg_url()).into(holder.recImg);
-        holder.name.setText(listingModelList.get(position).getName());
-        holder.price.setText(listingModelList.get(position).getPrice());
+        holder.name.setText(listingModelList.get(position).getUserName());
+        holder.price.setText("$" + listingModelList.get(position).getPrice().toString());
         holder.category.setText(listingModelList.get(position).getCategory());
     }
 
