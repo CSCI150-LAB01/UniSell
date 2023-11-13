@@ -69,6 +69,7 @@
         android:gravity="top"
         android:hint="Add description here..."
         android:maxWidth="0dp"
+        android:maxLength="300"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
