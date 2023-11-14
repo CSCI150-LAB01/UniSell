@@ -1,6 +1,5 @@
 package com.example.unisellapplication.ui.create_listing;
 
-
 import static android.app.Activity.RESULT_OK;
 
 import android.app.ProgressDialog;
@@ -24,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.unisellapplication.R;
 import com.example.unisellapplication.activities.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -237,7 +237,7 @@ public class CreateListingFragment extends Fragment {
         if(requestCode==SELECT_PICTURE && data!=null && resultCode==RESULT_OK) {
             {
                 ImageUri = data.getData();
-                imageButton.setImageURI(ImageUri);
+                Glide.with(getActivity()).load(ImageUri).into(imageButton);
             }
         }
     }

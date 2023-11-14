@@ -11,13 +11,14 @@
         android:layout_width="400dp"
         android:layout_height="250dp"
         android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
         android:src="@drawable/baseline_add_photo_alternate_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.01"
-        app:tint="#777777" />
+         />
 
     <TextView
         android:id="@+id/title_txt"
@@ -81,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28.5dp"
         android:layout_marginBottom="1dp"
-        android:text="Price"
+        android:text="Price $"
         android:textColor="@color/blue_2767"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -95,10 +96,10 @@
         android:background="@drawable/edittext_background"
         android:layout_marginTop="21.5dp"
         android:ems="10"
-        android:hint="$ Price"
+        android:hint="  0.00"
         android:textSize="20sp"
         android:inputType="textMultiLine"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         app:layout_constraintStart_toEndOf="@+id/price_txt"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescripiton" />
 
@@ -107,7 +108,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="225dp"
         android:layout_height="55dp"
-        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="7dp"
         android:hint="Select Category"
         app:hintTextColor="@color/hint_color"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,8 +121,8 @@
             android:id="@+id/SelectCategory"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="15sp"
-            android:inputType="none" />
+            android:inputType="none"
+            android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
