@@ -20,7 +20,11 @@ public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHold
 
     private Context context;
     private List<ListingModel> listingModelList;
-    // Continue here
+
+    public RecentAdapters(Context context, List<ListingModel> listingModelList) {
+        this.context = context;
+        this.listingModelList = listingModelList;
+    }
 
     @NonNull
     @Override
@@ -31,7 +35,7 @@ public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Glide.with(context).load(listingModelList.get(position).getImg_url()).into(holder.recImg);
-        holder.name.setText(listingModelList.get(position).getUserName());
+        holder.title.setText(listingModelList.get(position).getTitle());
         holder.price.setText("$" + listingModelList.get(position).getPrice().toString());
         holder.category.setText(listingModelList.get(position).getCategory());
     }
@@ -43,12 +47,12 @@ public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView recImg;
-        TextView name,price,category;
+        TextView title,price,category;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             recImg = itemView.findViewById(R.id.recent_img);
-            name = itemView.findViewById(R.id.recent_name);
+            title = itemView.findViewById(R.id.recent_title);
             price = itemView.findViewById(R.id.recent_price);
             category = itemView.findViewById(R.id.recent_cat);
         }

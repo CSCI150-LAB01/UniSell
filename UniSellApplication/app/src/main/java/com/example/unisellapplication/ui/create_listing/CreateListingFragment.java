@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -138,6 +139,7 @@ public class CreateListingFragment extends Fragment {
         Price = Price.replace("$", "").replace(",", "");
         newPrice = Float.parseFloat(Price);
 
+
         if(newPrice == null){
             Toast.makeText(getActivity(), "Please input a valid price", Toast.LENGTH_SHORT).show();
             return;
@@ -193,7 +195,7 @@ public class CreateListingFragment extends Fragment {
                         listMap.put("uid", currentUserId);
                         listMap.put("date", saveCurrentDate);
                         listMap.put("time", saveCurrentTime);
-                        listMap.put("img_url", downloadUrl);
+                        listMap.put("img_url", ImageUri.toString());
                         listMap.put("title", Title);
                         listMap.put("description", Description);
                         listMap.put("price", newPrice);
@@ -237,6 +239,7 @@ public class CreateListingFragment extends Fragment {
         if(requestCode==SELECT_PICTURE && data!=null && resultCode==RESULT_OK) {
             {
                 ImageUri = data.getData();
+                Log.d("PostimageURI", ImageUri.toString());
                 Glide.with(getActivity()).load(ImageUri).into(imageButton);
             }
         }

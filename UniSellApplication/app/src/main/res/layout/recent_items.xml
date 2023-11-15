@@ -20,7 +20,7 @@
             android:src="@mipmap/offers3"/>
 
         <TextView
-            android:id="@+id/recent_name"
+            android:id="@+id/recent_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/archivo"
@@ -38,20 +38,13 @@
             android:text="Price"
             android:textSize="16sp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/recent_cat"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:text="Category"
+            />
 
-            <TextView
-                android:id="@+id/recent_cat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category"
-                />
-
-
-        </LinearLayout>
 
     </LinearLayout>
 
