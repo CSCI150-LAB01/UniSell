@@ -32,4 +32,9 @@
         android:name="com.example.unisellapplication.MyFavoritesFragment"
         android:label="@string/favorites"
         tools:layout="@layout/fragment_my_favorites" />
+    <fragment
+        android:id="@+id/nav_mission"
+        android:name="com.example.unisellapplication.ui.mission.MissionFragment"
+        android:label="@string/mission"
+        tools:layout="@layout/fragment_my_favorites" />
 </navigation>
