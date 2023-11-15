@@ -20,7 +20,7 @@ public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHold
 
     private Context context;
     private List<ListingModel> listingModelList;
-    //Continue here
+    // Continue here
 
     @NonNull
     @Override
