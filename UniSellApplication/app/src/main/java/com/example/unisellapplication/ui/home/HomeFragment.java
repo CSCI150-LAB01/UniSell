@@ -60,7 +60,6 @@ public class HomeFragment extends Fragment {
                 if (snapshot.exists()) {
                     for (DataSnapshot listSnapShot : snapshot.getChildren()) {
                         ListingModel listingModel = listSnapShot.getValue(ListingModel.class);
-                        Log.d("GETIMGURL", listingModel.getImg_url());
                         listingModelList.add(listingModel);
                         recentAdapters.notifyDataSetChanged();
                     }

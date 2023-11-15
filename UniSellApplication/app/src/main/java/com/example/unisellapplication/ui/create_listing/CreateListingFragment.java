@@ -239,7 +239,6 @@ public class CreateListingFragment extends Fragment {
         if(requestCode==SELECT_PICTURE && data!=null && resultCode==RESULT_OK) {
             {
                 ImageUri = data.getData();
-                Log.d("PostimageURI", ImageUri.toString());
                 Glide.with(getActivity()).load(ImageUri).into(imageButton);
             }
         }
