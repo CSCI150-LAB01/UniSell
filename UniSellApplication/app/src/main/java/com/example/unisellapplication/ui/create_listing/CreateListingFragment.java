@@ -57,7 +57,7 @@ public class CreateListingFragment extends Fragment {
     DatabaseReference userReference, addListingReference;
     FirebaseAuth auth;
     String Title, Description, Category, Price, saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, currentUserId;
-    String[] item = {"Textbooks", "School Supplies","Lab Equipment", "Dorm Essentials", "Other"};
+    String[] item = {"Textbooks", "School Supplies","Lab Equipment", "Dorm Essentials", "Technology","Other"};
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
 
@@ -259,7 +259,7 @@ public class CreateListingFragment extends Fragment {
     }
     public static boolean useRegex(final String input) {
         // Compile regular expression
-        final Pattern pattern = Pattern.compile("^[0-9]*(\\.[0-9]\\d\\d{0,2})?$", Pattern.CASE_INSENSITIVE);
+        final Pattern pattern = Pattern.compile("^[0-9]*(\\.[0-9]\\d\\d{2})?$", Pattern.CASE_INSENSITIVE);
         // Match regex against input
         final Matcher matcher = pattern.matcher(input);
         // Use results...
