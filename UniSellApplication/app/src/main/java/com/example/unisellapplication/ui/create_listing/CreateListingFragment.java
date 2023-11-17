@@ -28,6 +28,7 @@ import com.bumptech.glide.Glide;
 import com.example.unisellapplication.R;
 import com.example.unisellapplication.activities.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -168,14 +169,24 @@ public class CreateListingFragment extends Fragment {
         postRandomName = saveCurrentDate + saveCurrentTime;
 
         StorageReference filePath = storageReference.child("Post Images").child(ImageUri.getLastPathSegment() + postRandomName + ".png");
-
         filePath.putFile(ImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                if(task.isSuccessful()){
-                    downloadUrl = task.getResult().getMetadata().getReference().getDownloadUrl().toString();
-                    Toast.makeText(getActivity(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
-                    SavingListInformationToDatabase();
+                if(task.isSuccessful()) {
+                    if (task.getResult().getMetadata() != null) {
+                        if (task.getResult().getMetadata().getReference() != null) {
+                            Task<Uri> result = task.getResult().getMetadata().getReference().getDownloadUrl();
+                            result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    downloadUrl = uri.toString();
+                                    Log.d("downloadURL", downloadUrl);
+                                    Toast.makeText(getActivity(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+                                    SavingListInformationToDatabase();
+                                }
+                            });
+                        }
+                    }
                 }
                 else {
                     Toast.makeText(getActivity(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -195,7 +206,7 @@ public class CreateListingFragment extends Fragment {
                         listMap.put("uid", currentUserId);
                         listMap.put("date", saveCurrentDate);
                         listMap.put("time", saveCurrentTime);
-                        listMap.put("img_url", ImageUri.toString());
+                        listMap.put("img_url", downloadUrl);
                         listMap.put("title", Title);
                         listMap.put("description", Description);
                         listMap.put("price", newPrice);

@@ -17,7 +17,7 @@
             android:layout_width="280dp"
             android:layout_height="190dp"
             app:riv_corner_radius="14dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             android:src="@mipmap/offers3"/>
 
         <TextView
