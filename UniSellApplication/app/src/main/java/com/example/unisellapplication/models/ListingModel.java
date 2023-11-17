@@ -6,14 +6,14 @@ public class ListingModel {
     String img_url;
     String title;
     String description;
-    Float price;
+    String price;
     String category;
     String userName;
     String userPhone;
     public ListingModel() {
     }
 
-    public ListingModel(String date, String time, String img_url, String title, String description, Float price, String category, String userName, String userPhone) {
+    public ListingModel(String date, String time, String img_url, String title, String description, String price, String category, String userName, String userPhone) {
         this.date = date;
         this.time = time;
         this.img_url = img_url;
@@ -63,12 +63,11 @@ public class ListingModel {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public Float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

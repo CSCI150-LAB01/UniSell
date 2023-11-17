@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         if(auth.getCurrentUser() != null){
             progressBar.setVisibility(View.VISIBLE);
             startActivity(new Intent(HomeActivity.this, MainActivity.class));
-            Toast.makeText(this, "please wait you are already logged in", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please wait you are already logged in", Toast.LENGTH_SHORT).show();
             finish();
         }
     }

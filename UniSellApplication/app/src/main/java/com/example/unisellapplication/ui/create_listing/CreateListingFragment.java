@@ -39,10 +39,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateListingFragment extends Fragment {
 
@@ -55,8 +56,7 @@ public class CreateListingFragment extends Fragment {
     StorageReference storageReference;
     DatabaseReference userReference, addListingReference;
     FirebaseAuth auth;
-    String Title, Description, Category, saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, currentUserId;
-    Float newPrice;
+    String Title, Description, Category, Price, saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, currentUserId;
     String[] item = {"Textbooks", "School Supplies","Lab Equipment", "Dorm Essentials", "Other"};
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
@@ -114,7 +114,7 @@ public class CreateListingFragment extends Fragment {
     private void ValidatePostInfo() {
         Title = title.getText().toString();
         Description = description.getText().toString();
-        String Price = price.getText().toString();
+        Price = price.getText().toString();
         Category = autoCompleteTextView.getText().toString();
 
         if(ImageUri == null){
@@ -138,11 +138,9 @@ public class CreateListingFragment extends Fragment {
         }
 
         Price = Price.replace("$", "").replace(",", "");
-        newPrice = Float.parseFloat(Price);
 
-
-        if(newPrice == null){
-            Toast.makeText(getActivity(), "Please input a valid price", Toast.LENGTH_SHORT).show();
+        if(!useRegex(Price)){
+            Toast.makeText(getActivity(), "Please input a valid price (0.00)", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -209,7 +207,7 @@ public class CreateListingFragment extends Fragment {
                         listMap.put("img_url", downloadUrl);
                         listMap.put("title", Title);
                         listMap.put("description", Description);
-                        listMap.put("price", newPrice);
+                        listMap.put("price", Price);
                         listMap.put("category", Category);
                         listMap.put("userName", userName);
                         listMap.put("userPhone", userPhone);
@@ -259,5 +257,12 @@ public class CreateListingFragment extends Fragment {
         Intent mainIntent = new Intent(getActivity(), MainActivity.class);
         startActivity(mainIntent);
     }
-
+    public static boolean useRegex(final String input) {
+        // Compile regular expression
+        final Pattern pattern = Pattern.compile("^[0-9]*(\\.[0-9]\\d\\d{0,2})?$", Pattern.CASE_INSENSITIVE);
+        // Match regex against input
+        final Matcher matcher = pattern.matcher(input);
+        // Use results...
+        return matcher.matches();
+    }
 }
