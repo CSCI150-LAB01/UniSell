@@ -18,4 +18,9 @@
     <string name="favorites">Favorites</string>
     <string name="home">Home</string>
     <string name="mission">Mission</string>
+    <string name="other">Other</string>
+    <string name="dorm_essentials">Dorm Essentials</string>
+    <string name="school_supplies">School Supplies</string>
+    <string name="textbooks">Textbooks</string>
+    <string name="technoloy">Technoloy</string>
 </resources>
