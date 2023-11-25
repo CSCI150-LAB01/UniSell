@@ -37,4 +37,10 @@
         android:name="com.example.unisellapplication.ui.mission.MissionFragment"
         android:label="@string/mission"
         tools:layout="@layout/fragment_my_favorites" />
+
+    <fragment
+        android:id="@+id/nav_dorms"
+        android:name="com.example.unisellapplication.ui.category.DormFragment"
+        android:label="@string/dorm_essentials"
+        tools:layout="@layout/fragment_my_favorites" />
 </navigation>

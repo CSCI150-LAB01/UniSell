@@ -32,6 +32,7 @@ public class LabFragment extends Fragment {
     List<ListingModel> listingModelList;
     RecentAdapters recentAdapters, filteredAdapter;
     EditText search_box;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_lab, container, false);
@@ -47,7 +48,12 @@ public class LabFragment extends Fragment {
         recentRecycle.setLayoutManager(linearLayoutManager);
 
         listingModelList = new ArrayList<>();
-        recentAdapters = new RecentAdapters(getActivity(), listingModelList);
+        recentAdapters = new RecentAdapters(getActivity(), listingModelList, new RecentAdapters.OnItemClickListener() {
+            @Override
+            public void onItemClick(ListingModel listItem) {
+                Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+            }
+        });
         recentRecycle.setAdapter(recentAdapters);
 
         addListingReference.orderByChild("category").equalTo("Lab Equipment").addValueEventListener(new ValueEventListener() {
@@ -103,7 +109,12 @@ public class LabFragment extends Fragment {
     }
     private void searchProduct(String inText) {
         List<ListingModel> filteredList = new ArrayList<>();
-        filteredAdapter = new RecentAdapters(getActivity(), filteredList);
+        filteredAdapter = new RecentAdapters(getActivity(), filteredList, new RecentAdapters.OnItemClickListener() {
+            @Override
+            public void onItemClick(ListingModel listItem) {
+                Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+            }
+        });
         recentRecycle.swapAdapter(filteredAdapter, true);
 
         if(!inText.isEmpty()){

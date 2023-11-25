@@ -47,7 +47,12 @@ public class TextbooksFragment extends Fragment {
         recentRecycle.setLayoutManager(linearLayoutManager);
 
         listingModelList = new ArrayList<>();
-        recentAdapters = new RecentAdapters(getActivity(), listingModelList);
+        recentAdapters = new RecentAdapters(getActivity(), listingModelList, new RecentAdapters.OnItemClickListener() {
+            @Override
+            public void onItemClick(ListingModel listItem) {
+                Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+            }
+        });
         recentRecycle.setAdapter(recentAdapters);
 
         addListingReference.orderByChild("category").equalTo("Textbooks").addValueEventListener(new ValueEventListener() {
@@ -102,7 +107,12 @@ public class TextbooksFragment extends Fragment {
     }
     private void searchProduct(String inText) {
         List<ListingModel> filteredList = new ArrayList<>();
-        filteredAdapter = new RecentAdapters(getActivity(), filteredList);
+        filteredAdapter = new RecentAdapters(getActivity(), filteredList, new RecentAdapters.OnItemClickListener() {
+            @Override
+            public void onItemClick(ListingModel listItem) {
+                Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+            }
+        });
         recentRecycle.swapAdapter(filteredAdapter, true);
 
         if(!inText.isEmpty()){

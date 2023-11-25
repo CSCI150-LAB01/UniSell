@@ -21,9 +21,16 @@ public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHold
     private Context context;
     private List<ListingModel> listingModelList;
 
-    public RecentAdapters(Context context, List<ListingModel> listingModelList) {
+    private final OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(ListingModel listItem);
+    }
+
+    public RecentAdapters(Context context, List<ListingModel> listingModelList, OnItemClickListener listener) {
         this.context = context;
         this.listingModelList = listingModelList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -32,13 +39,11 @@ public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHold
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recent_items, parent,false));
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Glide.with(context).load(listingModelList.get(position).getImg_url()).into(holder.recImg);
-        holder.title.setText(listingModelList.get(position).getTitle());
-        holder.price.setText("$" + listingModelList.get(position).getPrice());
-        holder.category.setText(listingModelList.get(position).getCategory());
+    @Override public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.bind(listingModelList.get(position), listener);
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -55,6 +60,18 @@ public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHold
             title = itemView.findViewById(R.id.recent_title);
             price = itemView.findViewById(R.id.recent_price);
             category = itemView.findViewById(R.id.recent_cat);
+        }
+
+        public void bind(final ListingModel item, final OnItemClickListener listener) {
+            Glide.with(context).load(item.getImg_url()).into(recImg);
+            title.setText(item.getTitle());
+            price.setText("$" + item.getPrice());
+            category.setText(item.getCategory());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
         }
     }
 }
