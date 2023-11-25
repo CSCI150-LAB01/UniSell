@@ -13,6 +13,7 @@
         android:theme="@style/Theme.UniSellApplication"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".activities.OtherActivity"
             android:exported="false" />
         <activity
@@ -20,6 +21,9 @@
             android:exported="false" />
         <activity
             android:name=".activities.LabActivity"
+=======
+            android:name=".activities.TechnologyActivity"
+>>>>>>> 3654bc2243dbf231570a1b3441e74e88b38869b6
             android:exported="false" />
         <activity
             android:name=".activities.DormActivity"
