@@ -94,6 +94,10 @@ public class SchoolFragment extends Fragment {
             }
         });
 
+        if (container != null) {
+            container.removeAllViews();
+        }
+
         return root;
     }
     private void searchProduct(String inText) {

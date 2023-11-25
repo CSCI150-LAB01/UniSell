@@ -1,6 +1,5 @@
 package com.example.unisellapplication.ui.category;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.unisellapplication.R;
-<<<<<<< HEAD
-import com.example.unisellapplication.activities.DormActivity;
-import com.example.unisellapplication.activities.TechnologyActivity;
-=======
-import com.example.unisellapplication.activities.LabActivity;
-import com.example.unisellapplication.activities.OtherActivity;
-import com.example.unisellapplication.activities.SchoolActivity;
->>>>>>> 671afeb7fae1b124961f9c4b8b37461a176af29a
+
 
 public class CategoryFragment extends Fragment {
     LinearLayout textbook_layout, dorm_layout, tech_layout, school_layout, lab_layout, other_layout;
@@ -102,6 +94,10 @@ public class CategoryFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+        if (container != null) {
+            container.removeAllViews();
+        }
 
         return root;
     }
