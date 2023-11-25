@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.LabActivity">
+    tools:context=".ui.category.SchoolFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/archivo"
-                android:text="Lab Listings"
+                android:text="School Supplies Listings"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

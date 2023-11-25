@@ -14,9 +14,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.unisellapplication.R;
 import com.example.unisellapplication.activities.DormActivity;
-import com.example.unisellapplication.activities.LabActivity;
-import com.example.unisellapplication.activities.OtherActivity;
-import com.example.unisellapplication.activities.SchoolActivity;
 import com.example.unisellapplication.activities.TechnologyActivity;
 
 public class CategoryFragment extends Fragment {
@@ -59,19 +56,34 @@ public class CategoryFragment extends Fragment {
         school_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SchoolActivity.class));
+                Fragment fragment = new SchoolFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
         lab_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), LabActivity.class));
+                Fragment fragment = new LabFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
         other_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), OtherActivity.class));
+                Fragment fragment = new OtherFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
 
