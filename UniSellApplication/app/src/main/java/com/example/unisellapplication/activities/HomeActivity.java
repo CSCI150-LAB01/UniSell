@@ -36,4 +36,5 @@ public class HomeActivity extends AppCompatActivity {
     public void registration(View view) {
         startActivity(new Intent(HomeActivity.this, RegistrationActivity.class));
     }
+
 }

@@ -33,8 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-
-
     RecyclerView recentRecycle;
     DatabaseReference addListingReference;
     List<ListingModel> listingModelList;
