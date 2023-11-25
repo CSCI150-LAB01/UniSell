@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.unisellapplication.R;
 import com.example.unisellapplication.activities.DormActivity;
@@ -16,7 +18,6 @@ import com.example.unisellapplication.activities.LabActivity;
 import com.example.unisellapplication.activities.OtherActivity;
 import com.example.unisellapplication.activities.SchoolActivity;
 import com.example.unisellapplication.activities.TechnologyActivity;
-import com.example.unisellapplication.activities.TextbooksActivity;
 
 public class CategoryFragment extends Fragment {
     LinearLayout textbook_layout, dorm_layout, tech_layout, school_layout, lab_layout, other_layout;
@@ -35,7 +36,12 @@ public class CategoryFragment extends Fragment {
         textbook_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), TextbooksActivity.class));
+                Fragment fragment = new TextbooksFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
         dorm_layout.setOnClickListener(new View.OnClickListener() {
