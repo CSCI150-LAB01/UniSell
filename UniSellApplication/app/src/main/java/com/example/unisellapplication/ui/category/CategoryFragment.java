@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.unisellapplication.R;
-import com.example.unisellapplication.activities.DormActivity;
 import com.example.unisellapplication.activities.LabActivity;
 import com.example.unisellapplication.activities.OtherActivity;
 import com.example.unisellapplication.activities.SchoolActivity;
@@ -47,7 +46,12 @@ public class CategoryFragment extends Fragment {
         dorm_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), DormActivity.class));
+                Fragment fragment = new DormFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
         tech_layout.setOnClickListener(new View.OnClickListener() {
