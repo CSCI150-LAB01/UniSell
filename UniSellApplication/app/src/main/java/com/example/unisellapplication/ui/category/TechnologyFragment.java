@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DormFragment extends Fragment {
+public class TechnologyFragment extends Fragment {
     RecyclerView recentRecycle;
     DatabaseReference addListingReference;
     List<ListingModel> listingModelList;
@@ -34,7 +34,7 @@ public class DormFragment extends Fragment {
     EditText search_box;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_dorm, container, false);
+        View root = inflater.inflate(R.layout.fragment_technology, container, false);
 
         recentRecycle = root.findViewById(R.id.recent_rec);
         addListingReference = FirebaseDatabase.getInstance().getReference().child("Recent Products");
@@ -50,7 +50,7 @@ public class DormFragment extends Fragment {
         recentAdapters = new RecentAdapters(getActivity(), listingModelList);
         recentRecycle.setAdapter(recentAdapters);
 
-        addListingReference.orderByChild("category").equalTo("Dorm Essentials").addValueEventListener(new ValueEventListener() {
+        addListingReference.orderByChild("category").equalTo("Technology").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
