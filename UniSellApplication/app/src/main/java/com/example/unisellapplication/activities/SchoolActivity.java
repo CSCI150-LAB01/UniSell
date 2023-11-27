@@ -1,22 +1,25 @@
-package com.example.unisellapplication.ui.category;
+package com.example.unisellapplication.activities;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unisellapplication.R;
 import com.example.unisellapplication.adapters.RecentAdapters;
 import com.example.unisellapplication.models.ListingModel;
+import com.example.unisellapplication.ui.category.CategoryFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,36 +29,42 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TechnologyFragment extends Fragment {
+public class SchoolActivity extends AppCompatActivity {
     RecyclerView recentRecycle;
     DatabaseReference addListingReference;
     List<ListingModel> listingModelList;
     RecentAdapters recentAdapters, filteredAdapter;
     EditText search_box;
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_technology, container, false);
+    Toolbar toolbar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_school);
 
-        recentRecycle = root.findViewById(R.id.recent_rec);
+        recentRecycle = findViewById(R.id.recent_rec);
         addListingReference = FirebaseDatabase.getInstance().getReference().child("Recent Products");
+
+        toolbar = findViewById(R.id.school_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Recent items recycle
         recentRecycle.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager( SchoolActivity.this);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         recentRecycle.setLayoutManager(linearLayoutManager);
 
         listingModelList = new ArrayList<>();
-        recentAdapters = new RecentAdapters(getActivity(), listingModelList, new RecentAdapters.OnItemClickListener() {
+        recentAdapters = new RecentAdapters( SchoolActivity.this, listingModelList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText( SchoolActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.setAdapter(recentAdapters);
 
-        addListingReference.orderByChild("category").equalTo("Technology").addValueEventListener(new ValueEventListener() {
+        addListingReference.orderByChild("category").equalTo("School Supplies").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -74,7 +83,7 @@ public class TechnologyFragment extends Fragment {
         });
 
         //Search
-        search_box = root.findViewById(R.id.search_box);
+        search_box = findViewById(R.id.search_box);
         search_box.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -98,19 +107,35 @@ public class TechnologyFragment extends Fragment {
                 }
             }
         });
+    }
 
-        if (container != null) {
-            container.removeAllViews();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Fragment fragment = new CategoryFragment();
+                replaceFragment(fragment);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
 
-        return root;
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+        fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment); // Replace R.id.fragment_container with the actual ID of your fragment container
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
     private void searchProduct(String inText) {
         List<ListingModel> filteredList = new ArrayList<>();
-        filteredAdapter = new RecentAdapters(getActivity(), filteredList, new RecentAdapters.OnItemClickListener() {
+        filteredAdapter = new RecentAdapters(SchoolActivity.this, filteredList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(SchoolActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.swapAdapter(filteredAdapter, true);
@@ -123,7 +148,7 @@ public class TechnologyFragment extends Fragment {
             }
 
             if(filteredList.isEmpty()){
-                Toast.makeText(getActivity(), "Search results not found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SchoolActivity.this, "Search results not found", Toast.LENGTH_SHORT).show();
             }
             else {
                 filteredAdapter.notifyDataSetChanged();

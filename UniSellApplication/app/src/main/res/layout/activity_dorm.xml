@@ -5,12 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.category.TechnologyFragment">
+    tools:context=".activities.DormActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/dorm_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red_186"
+            app:title="Dorm Essentials"
+            app:titleTextColor="@color/white"/>
 
         <EditText
             android:elevation="3dp"
@@ -37,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/archivo"
-                android:text="Technology Listings"
+                android:text="Dorm Listings"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

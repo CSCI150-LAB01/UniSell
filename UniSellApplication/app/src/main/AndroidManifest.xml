@@ -13,22 +13,23 @@
         android:theme="@style/Theme.UniSellApplication"
         tools:targetApi="31">
         <activity
-            android:name=".activities.OtherActivity"
+            android:name=".activities.TechnologyActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SchoolActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.LabActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".activities.TechnologyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.DormActivity"
+            android:name=".activities.OtherActivity"
             android:exported="false" />
         <activity
             android:name=".activities.TextbooksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DormActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.category.CategoryFragment" />
+        <activity
+            android:name=".activities.LabActivity"
             android:exported="false" />
         <activity
             android:name=".activities.RegistrationActivity"

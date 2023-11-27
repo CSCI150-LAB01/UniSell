@@ -1,5 +1,6 @@
 package com.example.unisellapplication.ui.category;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.unisellapplication.R;
+import com.example.unisellapplication.activities.DormActivity;
+import com.example.unisellapplication.activities.LabActivity;
+import com.example.unisellapplication.activities.OtherActivity;
+import com.example.unisellapplication.activities.SchoolActivity;
+import com.example.unisellapplication.activities.TechnologyActivity;
+import com.example.unisellapplication.activities.TextbooksActivity;
 
 
 public class CategoryFragment extends Fragment {
@@ -31,67 +38,43 @@ public class CategoryFragment extends Fragment {
         textbook_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new TextbooksFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Intent mainIntent = new Intent(getActivity(), TextbooksActivity.class);
+                startActivity(mainIntent);
             }
         });
         dorm_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new DormFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Intent mainIntent = new Intent(getActivity(), DormActivity.class);
+                startActivity(mainIntent);
             }
         });
         tech_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new TechnologyFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Intent mainIntent = new Intent(getActivity(), TechnologyActivity.class);
+                startActivity(mainIntent);
             }
         });
         school_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new SchoolFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Intent mainIntent = new Intent(getActivity(), SchoolActivity.class);
+                startActivity(mainIntent);
             }
         });
         lab_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new LabFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Intent mainIntent = new Intent(getActivity(), LabActivity.class);
+                startActivity(mainIntent);
             }
         });
         other_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new OtherFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Intent mainIntent = new Intent(getActivity(), OtherActivity.class);
+                startActivity(mainIntent);
             }
         });
 

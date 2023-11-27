@@ -5,12 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.category.OtherFragment">
+    tools:context=".activities.LabActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/lab_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red_186"
+            app:title="Lab Equipment"
+            app:titleTextColor="@color/white"/>
 
         <EditText
             android:elevation="3dp"
@@ -37,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/archivo"
-                android:text="Other Listings"
+                android:text="Lab Equipment Listings"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
