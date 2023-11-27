@@ -12,7 +12,6 @@ import com.example.unisellapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
-
     ProgressBar progressBar;
     FirebaseAuth auth;
     @Override
