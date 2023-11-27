@@ -55,9 +55,18 @@ public class ViewListingsActivity extends AppCompatActivity {
             case android.R.id.home:
                 // Handle the back button press
                 onBackPressed();
+                this.finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
         }
     }
 }

@@ -107,28 +107,15 @@ public class LabActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    @Override
+    }@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
             case android.R.id.home:
-                Fragment fragment = new CategoryFragment();
-                replaceFragment(fragment);
+                this.finish();
                 return true;
-            default:
-                return super.onOptionsItemSelected(item);
         }
-    }
-
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment); // Replace R.id.fragment_container with the actual ID of your fragment container
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        return super.onOptionsItemSelected(item);
     }
     private void searchProduct(String inText) {
         List<ListingModel> filteredList = new ArrayList<>();

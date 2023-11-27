@@ -74,7 +74,7 @@ public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHold
                     mainIntent.putExtra("details", item);
                     context.startActivity(mainIntent);
                     ((Activity) context).overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                    listener.onItemClick(item);
+                    //listener.onItemClick(item);
                 }
             });
         }

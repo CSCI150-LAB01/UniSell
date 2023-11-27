@@ -75,10 +75,6 @@ public class CategoryFragment extends Fragment {
             }
         });
 
-        if (container != null) {
-            container.removeAllViews();
-        }
-
         return root;
     }
 }
