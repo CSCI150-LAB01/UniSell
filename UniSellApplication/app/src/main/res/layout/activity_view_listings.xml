@@ -6,9 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.create_listing.CreateListingFragment">
 
-    <ImageButton
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/view_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red_186"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Title"
+        app:titleTextColor="@color/white" />
+
+    <ImageView
         android:id="@+id/add_img_button"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
@@ -16,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_toolbar"
         app:layout_constraintVertical_bias="0.01"
         />
 
@@ -27,11 +38,12 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="1dp"
         android:text="Title"
+        android:paddingLeft="5dp"
         android:textColor="@color/blue_2767"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editTextTitle"
-        app:layout_constraintStart_toStartOf="@id/add_img_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_img_button" />
 
     <TextView
@@ -59,8 +71,9 @@
         android:textColor="@color/blue_2767"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:paddingLeft="5dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextDescripiton"
-        app:layout_constraintStart_toStartOf="@id/editTextTitle"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
 
     <TextView
@@ -91,7 +104,8 @@
         android:textColor="@color/blue_2767"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/editTextTitle"
+        android:paddingLeft="5dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescripiton" />
 
     <TextView
@@ -120,6 +134,7 @@
         android:textColor="@color/blue_2767"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:paddingLeft="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/price_txt" />
 
@@ -130,7 +145,7 @@
         android:background="@drawable/edittext_background"
         android:layout_marginTop="21.5dp"
         android:ems="10"
-        android:text="Dorm Essentials"
+        android:text="Category"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:layout_marginStart="5dp"
@@ -138,9 +153,5 @@
         android:paddingLeft="10dp"
         app:layout_constraintStart_toEndOf="@+id/category_txt"
         app:layout_constraintTop_toBottomOf="@+id/editTextPrice" />
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

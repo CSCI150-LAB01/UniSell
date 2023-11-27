@@ -1,5 +1,6 @@
 package com.example.unisellapplication.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +19,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unisellapplication.R;
+import com.example.unisellapplication.activities.DormActivity;
+import com.example.unisellapplication.activities.ViewListingsActivity;
 import com.example.unisellapplication.adapters.RecentAdapters;
 import com.example.unisellapplication.databinding.FragmentHomeBinding;
 import com.example.unisellapplication.models.ListingModel;
@@ -59,7 +62,8 @@ public class HomeFragment extends Fragment {
         recentAdapters = new RecentAdapters(getActivity(), listingModelList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText(getContext(), "Item Clicked: " + listItem.getTitle(), Toast.LENGTH_LONG).show();
+                Intent mainIntent = new Intent(getActivity(), ViewListingsActivity.class);
+                startActivity(mainIntent);
             }
         });
         recentRecycle.setAdapter(recentAdapters);
