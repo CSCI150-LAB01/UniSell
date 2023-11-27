@@ -197,7 +197,7 @@ public class CreateListingFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    String userName = snapshot.child("name").getValue().toString();
+                    String userEmail = snapshot.child("email").getValue().toString();
                     String userPhone = snapshot.child("phone").getValue().toString();
 
                     HashMap listMap = new HashMap();
@@ -209,7 +209,7 @@ public class CreateListingFragment extends Fragment {
                         listMap.put("description", Description);
                         listMap.put("price", Price);
                         listMap.put("category", Category);
-                        listMap.put("userName", userName);
+                        listMap.put("userEmail", userEmail);
                         listMap.put("userPhone", userPhone);
 
                     addListingReference.child(currentUserId + postRandomName).updateChildren(listMap)
@@ -259,7 +259,7 @@ public class CreateListingFragment extends Fragment {
     }
     public static boolean useRegex(final String input) {
         // Compile regular expression
-        final Pattern pattern = Pattern.compile("^[0-9]*(\\.[0-9]\\d\\d{2})?$", Pattern.CASE_INSENSITIVE);
+        final Pattern pattern = Pattern.compile("^[0-9]*(\\.\\d\\d)?$", Pattern.CASE_INSENSITIVE);
         // Match regex against input
         final Matcher matcher = pattern.matcher(input);
         // Use results...

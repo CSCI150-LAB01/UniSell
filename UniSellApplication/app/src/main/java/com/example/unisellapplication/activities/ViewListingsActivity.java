@@ -45,7 +45,7 @@ public class ViewListingsActivity extends AppCompatActivity {
             description.setText(listItem.getDescription());
             price.setText("$" + listItem.getPrice());
             category.setText("Category: " + listItem.getCategory());
-            contactInfo.setText(listItem.getUserName() + "\n\n" + listItem.getUserPhone());
+            contactInfo.setText(listItem.getUserEmail() + "\n\n" + listItem.getUserPhone());
         }
     }
     @Override

@@ -10,12 +10,12 @@ public class ListingModel implements Serializable {
     String description;
     String price;
     String category;
-    String userName;
+    String userEmail;
     String userPhone;
     public ListingModel() {
     }
 
-    public ListingModel(String date, String time, String img_url, String title, String description, String price, String category, String userName, String userPhone) {
+    public ListingModel(String date, String time, String img_url, String title, String description, String price, String category, String userEmail, String userPhone) {
         this.date = date;
         this.time = time;
         this.img_url = img_url;
@@ -23,7 +23,7 @@ public class ListingModel implements Serializable {
         this.description = description;
         this.price = price;
         this.category = category;
-        this.userName = userName;
+        this.userEmail = userEmail;
         this.userPhone = userPhone;
     }
     public String getDate() {
@@ -81,12 +81,12 @@ public class ListingModel implements Serializable {
         this.category = category;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getUserPhone() {
