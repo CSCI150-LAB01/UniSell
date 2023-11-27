@@ -1,11 +1,9 @@
 package com.example.unisellapplication.activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
 
 import com.example.unisellapplication.R;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;

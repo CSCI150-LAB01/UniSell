@@ -59,7 +59,6 @@ public class OtherActivity extends AppCompatActivity {
         recentAdapters = new RecentAdapters( OtherActivity.this, listingModelList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText( OtherActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.setAdapter(recentAdapters);
@@ -135,7 +134,6 @@ public class OtherActivity extends AppCompatActivity {
         filteredAdapter = new RecentAdapters(OtherActivity.this, filteredList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText(OtherActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.swapAdapter(filteredAdapter, true);

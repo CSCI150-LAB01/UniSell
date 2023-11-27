@@ -135,7 +135,6 @@ public class SchoolActivity extends AppCompatActivity {
         filteredAdapter = new RecentAdapters(SchoolActivity.this, filteredList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText(SchoolActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.swapAdapter(filteredAdapter, true);

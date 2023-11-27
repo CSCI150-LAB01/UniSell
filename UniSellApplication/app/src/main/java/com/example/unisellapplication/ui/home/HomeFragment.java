@@ -4,28 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unisellapplication.R;
-import com.example.unisellapplication.activities.DormActivity;
 import com.example.unisellapplication.activities.ViewListingsActivity;
 import com.example.unisellapplication.adapters.RecentAdapters;
-import com.example.unisellapplication.databinding.FragmentHomeBinding;
 import com.example.unisellapplication.models.ListingModel;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.material.search.SearchBar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -62,8 +55,7 @@ public class HomeFragment extends Fragment {
         recentAdapters = new RecentAdapters(getActivity(), listingModelList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Intent mainIntent = new Intent(getActivity(), ViewListingsActivity.class);
-                startActivity(mainIntent);
+                
             }
         });
         recentRecycle.setAdapter(recentAdapters);
@@ -120,7 +112,7 @@ public class HomeFragment extends Fragment {
         filteredAdapter = new RecentAdapters(getActivity(), filteredList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText(getContext(), "Item Clicked: " + listItem.getTitle(), Toast.LENGTH_LONG).show();
+
             }
         });
         recentRecycle.swapAdapter(filteredAdapter, true);

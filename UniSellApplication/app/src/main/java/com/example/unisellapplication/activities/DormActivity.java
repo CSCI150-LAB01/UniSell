@@ -59,7 +59,6 @@ public class DormActivity extends AppCompatActivity {
         recentAdapters = new RecentAdapters( DormActivity.this, listingModelList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText( DormActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.setAdapter(recentAdapters);
@@ -135,7 +134,6 @@ public class DormActivity extends AppCompatActivity {
         filteredAdapter = new RecentAdapters(DormActivity.this, filteredList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText(DormActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.swapAdapter(filteredAdapter, true);

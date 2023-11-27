@@ -3,10 +3,7 @@ package com.example.unisellapplication.activities;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -62,7 +59,6 @@ public class LabActivity extends AppCompatActivity {
         recentAdapters = new RecentAdapters( LabActivity.this, listingModelList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText( LabActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.setAdapter(recentAdapters);
@@ -139,7 +135,6 @@ public class LabActivity extends AppCompatActivity {
         filteredAdapter = new RecentAdapters( LabActivity.this, filteredList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText( LabActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.swapAdapter(filteredAdapter, true);

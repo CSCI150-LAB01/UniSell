@@ -59,7 +59,6 @@ public class TextbooksActivity extends AppCompatActivity {
         recentAdapters = new RecentAdapters( TextbooksActivity.this, listingModelList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText( TextbooksActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.setAdapter(recentAdapters);
@@ -135,7 +134,6 @@ public class TextbooksActivity extends AppCompatActivity {
         filteredAdapter = new RecentAdapters(TextbooksActivity.this, filteredList, new RecentAdapters.OnItemClickListener() {
             @Override
             public void onItemClick(ListingModel listItem) {
-                Toast.makeText(TextbooksActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
             }
         });
         recentRecycle.swapAdapter(filteredAdapter, true);

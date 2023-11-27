@@ -1,6 +1,8 @@
 package com.example.unisellapplication.models;
 
-public class ListingModel {
+import java.io.Serializable;
+
+public class ListingModel implements Serializable {
     String date;
     String time;
     String img_url;

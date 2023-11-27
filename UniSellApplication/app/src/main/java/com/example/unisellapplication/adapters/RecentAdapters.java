@@ -1,6 +1,8 @@
 package com.example.unisellapplication.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.unisellapplication.R;
+import com.example.unisellapplication.activities.ViewListingsActivity;
 import com.example.unisellapplication.models.ListingModel;
 
 import java.util.List;
 
 public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHolder> {
-
     private Context context;
     private List<ListingModel> listingModelList;
-
     private final OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -69,6 +70,10 @@ public class RecentAdapters extends RecyclerView.Adapter<RecentAdapters.ViewHold
             category.setText(item.getCategory());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
+                    Intent mainIntent = new Intent(context, ViewListingsActivity.class);
+                    mainIntent.putExtra("details", item);
+                    context.startActivity(mainIntent);
+                    ((Activity) context).overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     listener.onItemClick(item);
                 }
             });

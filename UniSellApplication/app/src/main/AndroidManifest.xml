@@ -30,8 +30,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.DormActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.category.CategoryFragment" />
+            android:exported="false"/>
         <activity
             android:name=".activities.LabActivity"
             android:exported="false" />
