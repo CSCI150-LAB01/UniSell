@@ -12,11 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/candal"
         android:textStyle="bold"
         android:text="Welcome to"
         android:textColor="@color/blue_2767"
-        android:textSize="30sp"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,11 +24,10 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/candal"
         android:textStyle="bold"
         android:text="UniSell"
         android:textColor="@color/blue_2767"
-        android:textSize="30sp"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -74,7 +72,6 @@
                 android:text="Login"
                 android:textStyle="bold"
                 android:textColor="@color/red_186"
-                android:fontFamily="@font/candal"
                 android:textSize="22sp" />
         </LinearLayout>
 
@@ -99,7 +96,6 @@
                 android:text="Registration"
                 android:textStyle="bold"
                 android:textColor="@color/red_186"
-                android:fontFamily="@font/candal"
                 android:textSize="22sp" />
         </LinearLayout>
     </LinearLayout>
@@ -108,7 +104,6 @@
         android:id="@+id/textView4"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/candal"
         android:text="Resources for Fresno State Students. We are a platform where you can find your school necessities!"
         android:textAlignment="center"
         android:textColor="@color/blue_2767"
