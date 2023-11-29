@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.01"
-         />
+        />
 
     <TextView
         android:id="@+id/title_txt"
@@ -30,8 +30,9 @@
         android:textColor="@color/blue_2767"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginStart="5dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextTitle"
-        app:layout_constraintStart_toStartOf="@id/add_img_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_img_button" />
 
     <EditText
@@ -58,8 +59,9 @@
         android:textColor="@color/blue_2767"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginStart="5dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextDescripiton"
-        app:layout_constraintStart_toStartOf="@id/editTextTitle"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
 
     <EditText
@@ -88,7 +90,8 @@
         android:textColor="@color/blue_2767"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/editTextTitle"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescripiton" />
 
     <EditText
@@ -100,6 +103,7 @@
         android:hint="  $0.00"
         android:inputType="textMultiLine"
         android:textSize="20sp"
+        android:layout_marginStart="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/price_txt" />
 
