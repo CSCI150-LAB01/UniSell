@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.mission.MissionFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/Mission_Img"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@mipmap/unisell_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+
+    <TextView
+        android:id="@+id/Mission_Statement"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Mission Statement"
+        android:textAlignment="center"
+        android:textColor="@color/blue_2767"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Mission_Img"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="317dp"
+        android:layout_height="234dp"
+        android:text="The purpose of UniSell is to simplify Fresno State student's experiences of buying and selling college materials. Students that seek affordable academic resources can use this platform to find supplies for any course. Sellers can create listings with photos and descriptions to reach potential buyers within campus. UniSell aims to have an interface where students can easily manage their school equipment."
+        android:textAlignment="center"
+        android:textColor="@color/blue_2767"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Mission_Statement"
+        app:layout_constraintVertical_bias="0.03"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

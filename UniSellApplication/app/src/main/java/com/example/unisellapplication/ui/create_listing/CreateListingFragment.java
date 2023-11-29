@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import com.bumptech.glide.Glide;
 import com.example.unisellapplication.R;
 import com.example.unisellapplication.activities.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -37,10 +39,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateListingFragment extends Fragment {
 
@@ -53,9 +56,8 @@ public class CreateListingFragment extends Fragment {
     StorageReference storageReference;
     DatabaseReference userReference, addListingReference;
     FirebaseAuth auth;
-    String Title, Description, Category, saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, currentUserId;
-    Float newPrice;
-    String[] item = {"Textbooks", "School Supplies","Lab Equipment", "Dorm Essentials", "Other"};
+    String Title, Description, Category, Price, saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, currentUserId;
+    String[] item = {"Textbooks", "School Supplies","Lab Equipment", "Dorm Essentials", "Technology","Other"};
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
 
@@ -112,7 +114,7 @@ public class CreateListingFragment extends Fragment {
     private void ValidatePostInfo() {
         Title = title.getText().toString();
         Description = description.getText().toString();
-        String Price = price.getText().toString();
+        Price = price.getText().toString();
         Category = autoCompleteTextView.getText().toString();
 
         if(ImageUri == null){
@@ -136,10 +138,9 @@ public class CreateListingFragment extends Fragment {
         }
 
         Price = Price.replace("$", "").replace(",", "");
-        newPrice = Float.parseFloat(Price);
 
-        if(newPrice == null){
-            Toast.makeText(getActivity(), "Please input a valid price", Toast.LENGTH_SHORT).show();
+        if(!useRegex(Price)){
+            Toast.makeText(getActivity(), "Please input a valid price (0.00)", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -166,14 +167,24 @@ public class CreateListingFragment extends Fragment {
         postRandomName = saveCurrentDate + saveCurrentTime;
 
         StorageReference filePath = storageReference.child("Post Images").child(ImageUri.getLastPathSegment() + postRandomName + ".png");
-
         filePath.putFile(ImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                if(task.isSuccessful()){
-                    downloadUrl = task.getResult().getMetadata().getReference().getDownloadUrl().toString();
-                    Toast.makeText(getActivity(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
-                    SavingListInformationToDatabase();
+                if(task.isSuccessful()) {
+                    if (task.getResult().getMetadata() != null) {
+                        if (task.getResult().getMetadata().getReference() != null) {
+                            Task<Uri> result = task.getResult().getMetadata().getReference().getDownloadUrl();
+                            result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    downloadUrl = uri.toString();
+                                    Log.d("downloadURL", downloadUrl);
+                                    Toast.makeText(getActivity(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+                                    SavingListInformationToDatabase();
+                                }
+                            });
+                        }
+                    }
                 }
                 else {
                     Toast.makeText(getActivity(), "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -186,7 +197,7 @@ public class CreateListingFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    String userName = snapshot.child("name").getValue().toString();
+                    String userEmail = snapshot.child("email").getValue().toString();
                     String userPhone = snapshot.child("phone").getValue().toString();
 
                     HashMap listMap = new HashMap();
@@ -196,9 +207,9 @@ public class CreateListingFragment extends Fragment {
                         listMap.put("img_url", downloadUrl);
                         listMap.put("title", Title);
                         listMap.put("description", Description);
-                        listMap.put("price", newPrice);
+                        listMap.put("price", Price);
                         listMap.put("category", Category);
-                        listMap.put("userName", userName);
+                        listMap.put("userEmail", userEmail);
                         listMap.put("userPhone", userPhone);
 
                     addListingReference.child(currentUserId + postRandomName).updateChildren(listMap)
@@ -246,5 +257,12 @@ public class CreateListingFragment extends Fragment {
         Intent mainIntent = new Intent(getActivity(), MainActivity.class);
         startActivity(mainIntent);
     }
-
+    public static boolean useRegex(final String input) {
+        // Compile regular expression
+        final Pattern pattern = Pattern.compile("^[0-9]*(\\.\\d\\d)?$", Pattern.CASE_INSENSITIVE);
+        // Match regex against input
+        final Matcher matcher = pattern.matcher(input);
+        // Use results...
+        return matcher.matches();
+    }
 }

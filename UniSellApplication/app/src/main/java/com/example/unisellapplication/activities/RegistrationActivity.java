@@ -21,6 +21,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     Button signUp;
@@ -93,8 +96,8 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
 
-        if(userPhoneNumber.length() < 10){
-            Toast.makeText(this, "Phone number is not valid", Toast.LENGTH_SHORT).show();
+        if(!useRegex(userPhoneNumber)){
+            Toast.makeText(this, "Phone number does not match (123)456-7890 ", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -108,7 +111,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                       if(task.isSuccessful()){
+                       if(!task.isSuccessful()){
+                           progressBar.setVisibility(View.GONE);
+                           Toast.makeText(RegistrationActivity.this, "Error:"+task.getException(), Toast.LENGTH_SHORT).show();
+                       }
+                       else {
                            UserModel userModel = new UserModel(userName,userEmail,userPassword,userPhoneNumber);
                            String id = task.getResult().getUser().getUid();
                            database.getReference().child("Users").child(id).setValue(userModel);
@@ -116,12 +123,17 @@ public class RegistrationActivity extends AppCompatActivity {
                            SendUserToMainActivity();
                            Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                        }
-                       else {
-                           progressBar.setVisibility(View.GONE);
-                           Toast.makeText(RegistrationActivity.this, "Error:"+task.getException(), Toast.LENGTH_SHORT).show();
-                       }
                     }
                 });
+    }
+
+    public static boolean useRegex(final String input) {
+        // Compile regular expression
+        final Pattern pattern = Pattern.compile("\\(\\d\\d\\d\\)\\d\\d\\d-\\d\\d\\d\\d", Pattern.CASE_INSENSITIVE);
+        // Match regex against input
+        final Matcher matcher = pattern.matcher(input);
+        // Use results...
+        return matcher.matches();
     }
     private void SendUserToMainActivity()
     {

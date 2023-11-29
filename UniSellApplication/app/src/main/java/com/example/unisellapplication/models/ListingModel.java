@@ -1,19 +1,21 @@
 package com.example.unisellapplication.models;
 
-public class ListingModel {
+import java.io.Serializable;
+
+public class ListingModel implements Serializable {
     String date;
     String time;
     String img_url;
     String title;
     String description;
-    Float price;
+    String price;
     String category;
-    String userName;
+    String userEmail;
     String userPhone;
     public ListingModel() {
     }
 
-    public ListingModel(String date, String time, String img_url, String title, String description, Float price, String category, String userName, String userPhone) {
+    public ListingModel(String date, String time, String img_url, String title, String description, String price, String category, String userEmail, String userPhone) {
         this.date = date;
         this.time = time;
         this.img_url = img_url;
@@ -21,7 +23,7 @@ public class ListingModel {
         this.description = description;
         this.price = price;
         this.category = category;
-        this.userName = userName;
+        this.userEmail = userEmail;
         this.userPhone = userPhone;
     }
     public String getDate() {
@@ -63,12 +65,11 @@ public class ListingModel {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public Float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -80,12 +81,12 @@ public class ListingModel {
         this.category = category;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getUserPhone() {

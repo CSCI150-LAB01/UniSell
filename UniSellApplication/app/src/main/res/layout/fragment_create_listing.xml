@@ -42,7 +42,8 @@
         android:ems="10"
         android:hint="Add title here..."
         android:inputType="textMultiLine"
-        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_txt" />
@@ -72,6 +73,7 @@
         android:maxWidth="0dp"
         android:maxLength="300"
         android:inputType="textMultiLine"
+        android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_txt" />
@@ -80,9 +82,9 @@
         android:id="@+id/price_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28.5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="1dp"
-        android:text="Price $"
+        android:text="Price"
         android:textColor="@color/blue_2767"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -91,30 +93,29 @@
 
     <EditText
         android:id="@+id/editTextPrice"
-        android:layout_width="100dp"
+        android:layout_width="170dp"
         android:layout_height="40dp"
         android:background="@drawable/edittext_background"
-        android:layout_marginTop="21.5dp"
         android:ems="10"
-        android:hint="  0.00"
-        android:textSize="20sp"
+        android:hint="  $0.00"
         android:inputType="textMultiLine"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@+id/price_txt"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDescripiton" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price_txt" />
 
     <com.google.android.material.textfield.TextInputLayout
 
+        android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="225dp"
         android:layout_height="55dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="25dp"
         android:layout_marginRight="7dp"
         android:hint="Select Category"
-        app:hintTextColor="@color/hint_color"
-        app:layout_constraintEnd_toEndOf="parent"
         app:boxStrokeColor="@color/blue_2767"
         app:endIconTint="@color/hint_color"
+        app:hintTextColor="@color/hint_color"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescripiton">
 
         <AutoCompleteTextView

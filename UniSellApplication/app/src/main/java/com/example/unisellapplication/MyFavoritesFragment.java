@@ -24,6 +24,8 @@ public class MyFavoritesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private String mParam3;
+
     public MyFavoritesFragment() {
         // Required empty public constructor
     }

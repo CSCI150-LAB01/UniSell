@@ -12,7 +12,6 @@ import com.example.unisellapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
-
     ProgressBar progressBar;
     FirebaseAuth auth;
     @Override
@@ -26,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         if(auth.getCurrentUser() != null){
             progressBar.setVisibility(View.VISIBLE);
             startActivity(new Intent(HomeActivity.this, MainActivity.class));
-            Toast.makeText(this, "please wait you are already logged in", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please wait you are already logged in", Toast.LENGTH_SHORT).show();
             finish();
         }
     }
@@ -36,4 +35,5 @@ public class HomeActivity extends AppCompatActivity {
     public void registration(View view) {
         startActivity(new Intent(HomeActivity.this, RegistrationActivity.class));
     }
+
 }

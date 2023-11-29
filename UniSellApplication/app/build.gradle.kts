@@ -58,6 +58,10 @@ dependencies {
     //Glider
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
+    //Firebase UI
+    implementation("com.firebaseui:firebase-ui-database:8.0.2")
+
+
 
 
 }

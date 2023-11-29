@@ -1,11 +1,9 @@
 package com.example.unisellapplication.activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
 
 import com.example.unisellapplication.R;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -36,12 +34,13 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_profile, R.id.nav_category, R.id.nav_make_listing, R.id.nav_favorites)
+                R.id.nav_home, R.id.nav_profile, R.id.nav_category, R.id.nav_make_listing, R.id.nav_favorites, R.id.nav_mission)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     @Override
